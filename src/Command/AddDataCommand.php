@@ -6,13 +6,19 @@ use App\Entity\Person;
 use App\Entity\Building;
 use Doctrine\ORM\EntityManagerInterface;
 use Faker\Factory;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(
+    name: 'app:add-data',
+    description: 'test'
+)]
+
 class AddDataCommand extends Command
 {
-    protected static $defaultName = 'app:add-data';
+    protected static string  $defaultName = 'app:add-data';
     private EntityManagerInterface $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
